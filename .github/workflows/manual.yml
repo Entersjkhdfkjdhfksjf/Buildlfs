@@ -1,26 +1,26 @@
-name: Manual workflow
+name: build-focal
 
 on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
-  run:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    
+  build:
+    runs-on: ubuntu-20.04
+
     steps:
-    # Runs a single command using the runners shell
-    - name: part one
-      run: git clone https://github.com/Entersjkhdfkjdhfksjf/Buildlfs.git
-    - name: part 2
-      run: cd Buildfs
-    - name: part 3
-      run: ./bootstrap 1
-    - name: part 4
-      run: sudo ./bootstrap 2
-    - name: part 5
-      run: sudo ./bootstrap 3
-    - name: part 6
-      run: ./bootstrap 4
-    - name: part 7
-      run: ls -a
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          ./bootstrap.sh 1
+#      - name: Archive artifacts
+ #       uses: actions/upload-artifact@v3
+  #      with:
+   #       name: ubuntu-from-scratch
+    #      path: |
+     #       scripts/ubuntu-from-scratch.iso
+      #      scripts/image/md5sum.txt
