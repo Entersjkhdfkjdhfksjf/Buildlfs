@@ -29,4 +29,4 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: part one
-      run: echo ./bootstrap 1
+      run: ./bootstrap 1
